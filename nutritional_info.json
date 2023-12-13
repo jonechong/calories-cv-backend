@@ -1,0 +1,6 @@
+{
+    "Chwee_Kueh": {"calories": 200, "protein": 3.16, "carbs": 41.68, "fats": 1.84},
+    "bak_chor_mee": {"calories": 450, "protein": 20, "carbs": 50, "fats": 15},
+    "char_siew_rice": {"calories": 605, "protein": 24, "carbs": 91, "fats": 11.9},
+    "hainanese_chicken_rice": {"calories": 403, "protein": 23, "carbs": 42, "fats": 15 } 
+}

@@ -16,6 +16,9 @@ ort_session = ort.InferenceSession("./model_updated_256x256.onnx")
 with open('class_names.json') as f:
     class_names = json.load(f)
 
+with open('nutritional_info.json') as f:
+    nutritional_info = json.load(f)
+
 # Define the image transform
 transform = transforms.Compose([
     transforms.Resize((256, 256)),  # Example, adjust to match your training
@@ -39,8 +42,9 @@ async def predict(file: UploadFile = File(...)):
     
     # Map prediction index to class name
     prediction_name = class_names[prediction_index] if prediction_index < len(class_names) else "Unknown"
+    nutrition = nutritional_info.get(prediction_name, {"calories": 0, "protein": 0, "carbs": 0, "fats": 0})
 
-    return JSONResponse(content={"prediction": prediction_name})
+    return JSONResponse(content={"prediction": prediction_name, "nutrition": nutrition})
 
 if __name__ == "__main__":
     import uvicorn
